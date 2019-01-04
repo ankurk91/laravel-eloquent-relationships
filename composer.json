@@ -1,0 +1,30 @@
+{
+  "name": "ankurk91/laravel-eloquent-relationships",
+  "description": "Add some more eloquent relationships to Laravel php framework.",
+  "keywords": [
+    "laravel",
+    "eloquent"
+  ],
+  "homepage": "https://github.com/ankurk91/laravel-eloquent-relationships",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ankurk91",
+      "homepage": "https://ankurk91.github.io"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "illuminate/database": "5.7.*"
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Ankurk91\\Eloquent\\": "src"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
