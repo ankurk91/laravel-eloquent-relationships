@@ -14,7 +14,55 @@ composer require ankurk91/laravel-eloquent-relationships
 ```
 
 ## Usage
-* [BelongsToOne](#)
+### BelongsToOne
+BelongsToOne relation is almost identical to standard BelongsToMany except it returns one model instead of Collection of models 
+and `null` if there is no related model in DB (BelongsToMany returns empty Collection in this case). 
+Example:
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Ankurk91\Eloquent\BelongsToOne;
+
+class Restaurant extends Model
+{
+    use BelongsToOne;
+    
+    /**
+     * Each restaurant has only one operator.
+     * 
+     * @return \Ankurk91\Eloquent\Relations\BelongsToOne
+     */
+    public function operator()
+    {
+        return $this->belongsToOne(User::class)          
+            ->wherePivot('is_operator', true);
+    }
+
+    /**
+     * Get all employees including the operator.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function employees()
+    {
+        return $this->belongsToMany(User::class)
+            ->withPivot('is_operator');
+    }   
+}    
+```
+Now you can access the relationship like:
+```php
+// eager loading
+$restaurant = Restaurant::with('operator')->first();
+dump($restaurant->operator);
+// lazy loading
+$restaurant->load('operator');
+// load nested relation
+$restaurant->load('operator.profile');
+```
 
 ## Security
 If you discover any security related issues, please email `pro.ankurk1[at]gmail[dot]com` instead of using the issue tracker.
