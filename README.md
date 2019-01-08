@@ -67,6 +67,14 @@ $restaurant->load('operator');
 $restaurant->load('operator.profile');
 ```
 
+### MorphToOne
+MorphToOne relation is almost identical to standard MorphToMany except it returns one model instead of Collection of models 
+and `null` if there is no related model in DB (MorphToMany returns empty Collection in this case). 
+Example:
+```php
+
+```
+
 ## Testing
 ```
 composer test
