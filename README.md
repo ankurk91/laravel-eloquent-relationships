@@ -39,6 +39,7 @@ class Restaurant extends Model
     {
         return $this->belongsToOne(User::class)          
             ->wherePivot('is_operator', true);
+            //->withDefault();
     }
 
     /**

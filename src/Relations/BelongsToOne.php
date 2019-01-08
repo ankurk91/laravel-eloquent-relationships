@@ -18,7 +18,7 @@ class BelongsToOne extends BelongsToMany
      */
     public function getResults()
     {
-        return $this->get()->first();
+        return $this->first() ?: $this->getDefaultFor($this->getRelated());
     }
 
     /**
