@@ -31,18 +31,23 @@ trait BelongsToOne
         if (is_null($relation)) {
             $relation = $this->guessBelongsToOneRelation();
         }
+
         // First, we'll need to determine the foreign key and "other key" for the
         // relationship. Once we have determined the keys we'll make the query
         // instances as well as the relationship instances we need for this.
         $instance = $this->newRelatedInstance($related);
+
         $foreignPivotKey = $foreignPivotKey ?: $this->getForeignKey();
+
         $relatedPivotKey = $relatedPivotKey ?: $instance->getForeignKey();
+
         // If no table name was provided, we can guess it by concatenating the two
         // models using underscores in alphabetical order. The two model names
         // are transformed to snake case from their default CamelCase also.
         if (is_null($table)) {
             $table = $this->joiningTable($related);
         }
+
         return $this->newBelongsToOne(
             $instance->newQuery(), $this, $table, $foreignPivotKey,
             $relatedPivotKey, $parentKey ?: $this->getKeyName(),
@@ -78,6 +83,7 @@ trait BelongsToOne
     protected function guessBelongsToOneRelation()
     {
         list($one, $two, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+
         return $caller['function'];
     }
 }
