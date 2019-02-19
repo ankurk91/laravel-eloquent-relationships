@@ -4,8 +4,8 @@
 [![GitHub tag](https://img.shields.io/github/tag/ankurk91/laravel-eloquent-relationships.svg)](https://github.com/ankurk91/laravel-eloquent-relationships/releases)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.txt)
 [![Downloads](https://img.shields.io/packagist/dt/ankurk91/laravel-eloquent-relationships.svg)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships/stats)
-[![Build Status](https://travis-ci.com/ankurk91/aravel-eloquent-relationships.svg)](https://travis-ci.com/ankurk91/aravel-eloquent-relationships)
-[![codecov](https://codecov.io/gh/ankurk91/aravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/aravel-eloquent-relationships)
+[![Build Status](https://travis-ci.com/ankurk91/laravel-eloquent-relationships.svg)](https://travis-ci.com/ankurk91/laravel-eloquent-relationships)
+[![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
 This package adds some more relationships to eloquent in Laravel v5.7+
 
