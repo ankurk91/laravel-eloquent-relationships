@@ -18,13 +18,22 @@
     "illuminate/database": "5.7.*"
   },
   "require-dev": {
+    "phpunit/phpunit": "7.*"
   },
   "autoload": {
     "psr-4": {
       "Ankurk91\\Eloquent\\": "src"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "config": {
     "sort-packages": true
+  },
+  "scripts": {
+    "test": "phpunit"
   }
 }
