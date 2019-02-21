@@ -3,10 +3,11 @@
 namespace Tests\Models\Traits;
 
 use Tests\Models\Image;
+use Ankurk91\Eloquent\MorphToOne;
 
 trait HasImages
 {
-    use \Ankurk91\Eloquent\MorphToOne;
+    use MorphToOne;
 
     /**
      * @return \Ankurk91\Eloquent\Relations\MorphToOne

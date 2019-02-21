@@ -3,10 +3,11 @@
 namespace Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Ankurk91\Eloquent\BelongsToOne;
 
 class Restaurant extends Model
 {
-    use \Ankurk91\Eloquent\BelongsToOne;
+    use BelongsToOne;
     use Traits\HasImages;
 
     protected $guarded = ['id'];

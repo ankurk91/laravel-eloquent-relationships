@@ -19,7 +19,7 @@ class MorphToOneTest extends TestCase
          */
         $restaurant = Restaurant::create(['name' => 'ABC Inc']);
         $user = User::create(['email' => 'user@example.com']);
-        $image = Image::create(['name' => 'Tag']);
+        $image = Image::create(['name' => 'Image']);
 
         $restaurant->images()->attach($image, [
             'is_featured' => 1,
@@ -27,6 +27,9 @@ class MorphToOneTest extends TestCase
         $user->images()->attach($image, [
             'is_featured' => 1,
         ]);
+
+        $imageTwo = Image::create(['name' => 'Another']);
+        $restaurant->images()->attach($imageTwo);
 
         $restaurantWithoutImage = Restaurant::create(['name' => 'XYZ Inc']);
     }
@@ -54,5 +57,17 @@ class MorphToOneTest extends TestCase
         $this->assertInstanceOf(Image::class, $restaurant->featuredImageWithDefault);
         $this->assertFalse($restaurant->featuredImageWithDefault->exists);
         $this->assertNull($restaurant->featuredImage);
+    }
+
+    public function testReverseRelation()
+    {
+        $image = Image::first();
+
+        $this->assertInstanceOf(Restaurant::class, $image->restaurant);
+        $this->assertInstanceOf(User::class, $image->user);
+
+        // image two is not a featured image
+        $image = Image::find(2);
+        $this->assertNull($image->restaurant);
     }
 }
