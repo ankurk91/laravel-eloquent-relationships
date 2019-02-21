@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use \Ankurk91\Eloquent\BelongsToOne;
-    use Traits\HasTags;
-
-    const ROLE_MEMBER = 0;
-    const ROLE_OPERATOR = 1;
+    use Traits\HasImages;
 
     protected $guarded = ['id'];
 
@@ -20,10 +17,9 @@ class Restaurant extends Model
     public function operator()
     {
         return $this->belongsToOne(User::class)
-            ->as('meta')
-            ->withPivot(['role'])
-            ->withTimestamps()
-            ->wherePivot('role', Restaurant::ROLE_OPERATOR);
+            ->withPivot('is_operator')
+            ->wherePivot('is_operator', 1)
+            ->withTimestamps();
     }
 
     /**
@@ -32,10 +28,9 @@ class Restaurant extends Model
     public function operatorWithDefault()
     {
         return $this->belongsToOne(User::class)
-            ->as('meta')
-            ->withPivot(['role'])
+            ->withPivot('is_operator')
+            ->wherePivot('is_operator', 1)
             ->withTimestamps()
-            ->wherePivot('role', Restaurant::ROLE_OPERATOR)
             ->withDefault();
     }
 
@@ -45,8 +40,7 @@ class Restaurant extends Model
     public function employees()
     {
         return $this->belongsToMany(User::class)
-            ->as('meta')
-            ->withPivot(['role'])
+            ->withPivot('is_operator')
             ->withTimestamps();
     }
 }

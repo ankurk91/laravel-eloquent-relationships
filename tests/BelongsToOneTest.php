@@ -11,15 +11,16 @@ class BelongsToOneTest extends TestCase
     {
         parent::setUp();
 
+        /**
+         * @var Restaurant $restaurant
+         */
         $restaurant = Restaurant::create(['name' => 'ABC Inc']);
 
         $restaurant->employees()->attach(User::create(['email' => 'operator@example.com']), [
-            'role' => Restaurant::ROLE_OPERATOR,
+            'is_operator' => 1,
         ]);
 
-        $restaurant->employees()->attach(User::create(['email' => 'member@example.com']), [
-            'role' => Restaurant::ROLE_MEMBER,
-        ]);
+        $restaurant->employees()->attach(User::create(['email' => 'member@example.com']));
 
         $restaurantWithoutOperator = Restaurant::create(['name' => 'XYZ Inc']);
     }
@@ -29,7 +30,7 @@ class BelongsToOneTest extends TestCase
         $restaurant = Restaurant::with('operator')->first();
 
         $this->assertInstanceOf(User::class, $restaurant->operator);
-        $this->assertEquals(Restaurant::ROLE_OPERATOR, $restaurant->operator->meta->role);
+        $this->assertEquals(1, $restaurant->operator->pivot->is_operator);
     }
 
     public function testLazyLoading()
@@ -37,7 +38,7 @@ class BelongsToOneTest extends TestCase
         $restaurant = Restaurant::find(1);
 
         $this->assertInstanceOf(User::class, $restaurant->operator);
-        $this->assertEquals(Restaurant::ROLE_OPERATOR, $restaurant->operator->meta->role);
+        $this->assertEquals(1, $restaurant->operator->pivot->is_operator);
     }
 
     public function testWithDefault()

@@ -52,23 +52,26 @@ class TestCase extends BaseTestCase
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->tinyInteger('role')->unsigned()->default(0);
+            $table->boolean('is_operator')->default(0);
 
             $table->timestamps();
         });
 
-        DB::schema()->create('tags', function (Blueprint $table) {
+        DB::schema()->create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
         });
 
-        DB::schema()->create('taggables', function (Blueprint $table) {
+        DB::schema()->create('imageables', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('tag_id');
-            $table->unsignedInteger('taggable_id');
-            $table->string('taggable_type');
-            $table->boolean('is_primary')->default(0);
+
+            $table->unsignedInteger('image_id');
+            $table->foreign('image_id')->references('id')->on('imageable')->onDelete('cascade');
+
+            $table->unsignedInteger('imageable_id');
+            $table->string('imageable_type');
+            $table->boolean('is_featured')->default(0);
             $table->timestamps();
         });
     }

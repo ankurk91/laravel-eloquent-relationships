@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    use Traits\HasTags;
+    use Traits\HasImages;
 
     protected $guarded = ['id'];
 
@@ -16,8 +16,7 @@ class User extends Model
     public function restaurants()
     {
         return $this->belongsToMany(Restaurant::class)
-            ->as('meta')
-            ->withPivot(['role'])
+            ->withPivot('is_operator')
             ->withTimestamps();
     }
 }

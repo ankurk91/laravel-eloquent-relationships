@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Tests\Models\Tag;
+use Tests\Models\Image;
 use Tests\Models\User;
 use Tests\Models\Restaurant;
 
@@ -15,44 +15,44 @@ class MorphToOneTest extends TestCase
         /**
          * @var Restaurant $restaurant
          * @var User $user
-         * @var Tag $contact
+         * @var Image $image
          */
         $restaurant = Restaurant::create(['name' => 'ABC Inc']);
-        $user = User::create(['email' => 'operator@example.com']);
-        $contact = Tag::create(['name' => 'Taylor']);
+        $user = User::create(['email' => 'user@example.com']);
+        $image = Image::create(['name' => 'Tag']);
 
-        $restaurant->tags()->attach($contact, [
-            'is_primary' => Tag::IS_PRIMARY,
+        $restaurant->images()->attach($image, [
+            'is_featured' => 1,
         ]);
-        $user->tags()->attach($contact, [
-            'is_primary' => Tag::IS_PRIMARY,
+        $user->images()->attach($image, [
+            'is_featured' => 1,
         ]);
 
-        $restaurant = Restaurant::create(['name' => 'XYZ Inc']);
+        $restaurantWithoutImage = Restaurant::create(['name' => 'XYZ Inc']);
     }
 
     public function testEagerLoading()
     {
-        $restaurant = Restaurant::with('primaryTag')->first();
+        $restaurant = Restaurant::with('featuredImage')->first();
 
-        $this->assertInstanceOf(Tag::class, $restaurant->primaryTag);
-        $this->assertEquals(Tag::IS_PRIMARY, $restaurant->primaryTag->pivot->is_primary);
+        $this->assertInstanceOf(Image::class, $restaurant->featuredImage);
+        $this->assertEquals(1, $restaurant->featuredImage->pivot->is_featured);
     }
 
     public function testLazyLoading()
     {
         $restaurant = Restaurant::find(1);
 
-        $this->assertInstanceOf(Tag::class, $restaurant->primaryTag);
-        $this->assertEquals(Tag::IS_PRIMARY, $restaurant->primaryTag->pivot->is_primary);
+        $this->assertInstanceOf(Image::class, $restaurant->featuredImage);
+        $this->assertEquals(1, $restaurant->featuredImage->pivot->is_featured);
     }
 
     public function testWithDefault()
     {
         $restaurant = Restaurant::find(2);
 
-        $this->assertInstanceOf(Tag::class, $restaurant->primaryTagWithDefault);
-        $this->assertFalse($restaurant->primaryTagWithDefault->exists);
-        $this->assertNull($restaurant->primaryTag);
+        $this->assertInstanceOf(Image::class, $restaurant->featuredImageWithDefault);
+        $this->assertFalse($restaurant->featuredImageWithDefault->exists);
+        $this->assertNull($restaurant->featuredImage);
     }
 }
