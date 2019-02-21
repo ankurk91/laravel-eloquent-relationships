@@ -18,7 +18,7 @@ class MorphToOne extends MorphToMany
      */
     public function getResults()
     {
-        return $this->first();
+        return $this->first() ?: $this->getDefaultFor($this->getRelated());
     }
 
     /**

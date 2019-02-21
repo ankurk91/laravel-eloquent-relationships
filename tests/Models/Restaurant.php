@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     use \Ankurk91\Eloquent\BelongsToOne;
+    use Traits\HasTags;
 
     const ROLE_MEMBER = 0;
     const ROLE_OPERATOR = 1;

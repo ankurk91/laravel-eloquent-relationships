@@ -56,5 +56,20 @@ class TestCase extends BaseTestCase
 
             $table->timestamps();
         });
+
+        DB::schema()->create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        DB::schema()->create('taggables', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('tag_id');
+            $table->unsignedInteger('taggable_id');
+            $table->string('taggable_type');
+            $table->boolean('is_primary')->default(0);
+            $table->timestamps();
+        });
     }
 }
