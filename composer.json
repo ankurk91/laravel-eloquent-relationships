@@ -3,7 +3,9 @@
   "description": "Add some more eloquent relationships to Laravel php framework.",
   "keywords": [
     "laravel",
-    "eloquent"
+    "eloquent",
+    "BelongsToOne",
+    "MorphToOne"
   ],
   "homepage": "https://github.com/ankurk91/laravel-eloquent-relationships",
   "license": "MIT",

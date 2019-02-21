@@ -17,7 +17,7 @@ composer require ankurk91/laravel-eloquent-relationships
 
 ## Usage
 ### BelongsToOne
-BelongsToOne relation is almost identical to standard BelongsToMany except it returns one model instead of Collection of models 
+BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/5.7/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (BelongsToMany returns empty Collection in this case). 
 Example:
 ```php
@@ -68,11 +68,81 @@ $restaurant->load('operator.profile');
 ```
 
 ### MorphToOne
-MorphToOne relation is almost identical to standard MorphToMany except it returns one model instead of Collection of models 
+MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/5.7/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (MorphToMany returns empty Collection in this case). 
 Example:
 ```php
+<?php
 
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Image extends Model
+{
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function posts()
+    {
+        return $this->morphedByMany(Post::class, 'imageable');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function videos()
+    {
+        return $this->morphedByMany(Video::class, 'imageable');
+    }
+}
+```
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Ankurk91\Eloquent\MorphToOne;
+
+class Post extends Model
+{
+    use MorphToOne;
+
+    /**
+     * Each post has one featured image.
+     * 
+     * @return \Ankurk91\Eloquent\Relations\MorphToOne
+     */
+    public function featuredImage()
+    {
+        return $this->morphToOne(Image::class, 'imageable')
+            ->withPivot('featured')
+            ->wherePivot('featured', 1);
+            //->withDefault();
+    }
+    
+    /**
+     * Get all images including the featured.
+     *   
+     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
+     */
+    public function images()
+    {
+        return $this->morphToMany(Image::class, 'imageable')
+            ->withPivot('featured');
+    }
+
+}
+
+```
+Now you can access the relationship like:
+```php
+// eager loading
+$post = Post::with('featuredImage')->first();
+dump($post->featuredImage);
+// lazy loading
+$post->load('featuredImage');
 ```
 
 ## Testing
