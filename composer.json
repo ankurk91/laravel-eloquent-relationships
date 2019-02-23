@@ -17,15 +17,15 @@
   ],
   "require": {
     "php": "^7.1.3",
-    "illuminate/database": "5.7.*",
-    "illuminate/support": "5.7.*"
+    "illuminate/database": "5.7.*|5.8.*",
+    "illuminate/support": "5.7.*|5.8.*"
   },
   "require-dev": {
-    "phpunit/phpunit": "7.*"
+    "phpunit/phpunit": "^7.5"
   },
   "autoload": {
     "psr-4": {
-      "Ankurk91\\Eloquent\\": "src"
+      "Ankurk91\\Eloquent\\": "src/"
     }
   },
   "autoload-dev": {
@@ -34,9 +34,12 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "preferred-install": "dist"
   },
   "scripts": {
     "test": "phpunit"
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

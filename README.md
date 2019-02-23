@@ -117,7 +117,6 @@ class Post extends Model
     public function featuredImage()
     {
         return $this->morphToOne(Image::class, 'imageable')
-            ->withPivot('featured')
             ->wherePivot('featured', 1);
             //->withDefault();
     }
