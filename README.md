@@ -17,7 +17,7 @@ composer require ankurk91/laravel-eloquent-relationships
 
 ## Usage
 ### BelongsToOne
-BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/5.7/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
+BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/5.8/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (BelongsToMany returns empty Collection in this case). 
 Example:
 ```php
@@ -68,7 +68,7 @@ $restaurant->load('operator.profile');
 ```
 
 ### MorphToOne
-MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/5.7/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
+MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/5.8/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (MorphToMany returns empty Collection in this case). 
 Example:
 ```php
