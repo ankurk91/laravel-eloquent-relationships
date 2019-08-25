@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.com/ankurk91/laravel-eloquent-relationships.svg)](https://travis-ci.com/ankurk91/laravel-eloquent-relationships)
 [![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
-This package adds some more relationships to eloquent in Laravel v5.7+
+This package adds some missing relationships to eloquent in Laravel v5.7+
 
 ## Installation
 You can install the package via composer:

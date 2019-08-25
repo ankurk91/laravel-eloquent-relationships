@@ -8,7 +8,7 @@ use Tests\Models\Restaurant;
 
 class MorphToOneTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

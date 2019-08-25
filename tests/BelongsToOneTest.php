@@ -7,7 +7,7 @@ use Tests\Models\Restaurant;
 
 class BelongsToOneTest extends TestCase
 {
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
