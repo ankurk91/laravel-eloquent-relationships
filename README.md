@@ -4,10 +4,10 @@
 [![GitHub tag](https://badgen.net/github/tag/ankurk91/laravel-eloquent-relationships)](https://github.com/ankurk91/laravel-eloquent-relationships/releases)
 [![License](https://badgen.net/packagist/license/ankurk91/laravel-eloquent-relationships)](LICENSE.txt)
 [![Downloads](https://badgen.net/packagist/dt/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships/stats)
-[![Build Status](https://travis-ci.com/ankurk91/laravel-eloquent-relationships.svg)](https://travis-ci.com/ankurk91/laravel-eloquent-relationships)
+![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)
 [![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
-This package adds some missing relationships to eloquent in Laravel v5.7+
+This package adds some missing relationships to Eloquent in Laravel v5.7+
 
 ## Installation
 You can install the package via composer:
