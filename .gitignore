@@ -49,6 +49,5 @@ composer.phar
 *.key
 
 # Other
-/build/
 .phpunit.result.cache
 phpunit.xml

@@ -4,7 +4,7 @@
 [![GitHub tag](https://badgen.net/github/tag/ankurk91/laravel-eloquent-relationships)](https://github.com/ankurk91/laravel-eloquent-relationships/releases)
 [![License](https://badgen.net/packagist/license/ankurk91/laravel-eloquent-relationships)](LICENSE.txt)
 [![Downloads](https://badgen.net/packagist/dt/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships/stats)
-![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)
+[![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)](https://github.com/ankurk91/laravel-eloquent-relationships/actions)
 [![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
 This package adds some missing relationships to Eloquent in Laravel v5.7+
@@ -17,7 +17,7 @@ composer require ankurk91/laravel-eloquent-relationships
 
 ## Usage
 ### BelongsToOne
-BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/5.8/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
+BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (BelongsToMany returns empty Collection in this case). 
 Example:
 ```php
@@ -68,7 +68,7 @@ $restaurant->load('operator.profile');
 ```
 
 ### MorphToOne
-MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/5.8/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
+MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
 and `null` if there is no related model in DB (MorphToMany returns empty Collection in this case). 
 Example:
 ```php
