@@ -58,6 +58,8 @@ class Restaurant extends Model
 ```
 Now you can access the relationship like:
 ```php
+<?php
+
 // eager loading
 $restaurant = Restaurant::with('operator')->first();
 dump($restaurant->operator);
@@ -65,6 +67,10 @@ dump($restaurant->operator);
 $restaurant->load('operator');
 // load nested relation
 $restaurant->load('operator.profile');
+// Perform operations
+$restaurant->operator()->update([
+  'name'=> 'Mr. Bean'
+]);
 ```
 
 ### MorphToOne
@@ -137,6 +143,8 @@ class Post extends Model
 ```
 Now you can access the relationship like:
 ```php
+<?php
+
 // eager loading
 $post = Post::with('featuredImage')->first();
 dump($post->featuredImage);
