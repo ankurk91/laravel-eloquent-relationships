@@ -38,7 +38,7 @@
     "preferred-install": "dist"
   },
   "scripts": {
-    "test": "vendor/bin/phpunit"
+    "test": "vendor/bin/phpunit --testdox --color=always"
   },
   "minimum-stability": "dev",
   "prefer-stable": true
