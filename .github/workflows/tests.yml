@@ -6,6 +6,9 @@ on:
       - master
       - dev
   pull_request:
+    branches:
+      - master
+      - dev
   schedule:
     - cron: '0 0 1 * *'
 
@@ -25,26 +28,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Get composer cache directory
-        id: composercache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composercache.outputs.dir }}
-          key: php-v${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: php-v${{ matrix.php }}-composer-
-
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          tools: composer:v2
           coverage: xdebug
 
       - name: Install dependencies
-        run: composer update --${{ matrix.composer-flag }} --no-interaction
+        run: composer update --${{ matrix.composer-flag }} --no-interaction --no-progress
 
       - name: Execute tests
         run: composer test -- --coverage-clover=coverage.xml
