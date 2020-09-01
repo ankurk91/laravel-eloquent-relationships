@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.1, 7.2, 7.3, 7.4]
+        php: [7.2, 7.3, 7.4]
         composer-flag: [prefer-lowest, prefer-stable]
 
     name: php v${{ matrix.php }} - ${{ matrix.composer-flag }}
@@ -34,7 +34,7 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
           tools: composer:v2
-          coverage: xdebug
+          coverage: pcov
 
       - name: Install dependencies
         run: composer update --${{ matrix.composer-flag }} --no-interaction --no-progress
