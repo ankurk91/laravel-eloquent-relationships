@@ -10,7 +10,7 @@ on:
       - master
       - dev
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 0 10 * *'
 
 jobs:
   test:
@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.2, 7.3, 7.4, 8.0]
+        php: [7.3, 7.4, 8.0]
         composer-flag: [prefer-lowest, prefer-stable]
 
     name: php v${{ matrix.php }} - ${{ matrix.composer-flag }}
@@ -33,7 +33,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
-          tools: composer:v2
           coverage: pcov
 
       - name: Install dependencies

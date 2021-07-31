@@ -10,16 +10,22 @@
 This package adds some missing relationships to Eloquent in Laravel
 
 ## Installation
+
 You can install the package via composer:
-```
+
+```bash
 composer require ankurk91/laravel-eloquent-relationships
 ```
 
 ## Usage
+
 ### BelongsToOne
-BelongsToOne relation is almost identical to standard [BelongsToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many) except it returns one model instead of Collection of models 
-and `null` if there is no related model in DB (BelongsToMany returns empty Collection in this case). 
-Example:
+
+BelongsToOne relation is almost identical to
+standard [BelongsToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many) except it returns one model
+instead of Collection of models and `null` if there is no related model in DB (BelongsToMany returns empty Collection in
+this case). Example:
+
 ```php
 <?php
 
@@ -56,7 +62,9 @@ class Restaurant extends Model
     }   
 }    
 ```
+
 Now you can access the relationship like:
+
 ```php
 <?php
 
@@ -74,9 +82,12 @@ $restaurant->operator()->update([
 ```
 
 ### MorphToOne
-MorphToOne relation is almost identical to standard [MorphToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many-polymorphic-relations) except it returns one model instead of Collection of models 
-and `null` if there is no related model in DB (MorphToMany returns empty Collection in this case). 
-Example:
+
+MorphToOne relation is almost identical to
+standard [MorphToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
+returns one model instead of Collection of models and `null` if there is no related model in DB (MorphToMany returns
+empty Collection in this case). Example:
+
 ```php
 <?php
 
@@ -103,6 +114,7 @@ class Image extends Model
     }
 }
 ```
+
 ```php
 <?php
 
@@ -141,7 +153,9 @@ class Post extends Model
 }
 
 ```
+
 Now you can access the relationship like:
+
 ```php
 <?php
 
@@ -153,15 +167,20 @@ $post->load('featuredImage');
 ```
 
 ## Testing
-```
+
+```bash
 composer test
 ```
 
 ## Security
-If you discover any security related issues, please email `pro.ankurk1[at]gmail[dot]com` instead of using the issue tracker.
+
+If you discover any security related issues, please email `pro.ankurk1[at]gmail[dot]com` instead of using the issue
+tracker.
 
 ## Attribution
+
 Most of the code is taken from this [PR](https://github.com/laravel/framework/pull/25083)
 
 ## License
+
 The [MIT](https://opensource.org/licenses/MIT) License.

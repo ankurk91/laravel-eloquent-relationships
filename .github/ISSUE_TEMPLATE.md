@@ -6,7 +6,7 @@
 ```
 
 **Tell about your platform**
-* Laravel version : 7.x
+* Laravel version : 8.x
 * Database name and version : MySql|pgSql| x.x.x
 
 **Current behavior**
