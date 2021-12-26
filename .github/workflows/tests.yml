@@ -10,7 +10,7 @@ on:
       - master
       - dev
   schedule:
-    - cron: '0 0 10 * *'
+    - cron: '0 0 11 * *'
 
 jobs:
   test:
@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.3, 7.4, 8.0, 8.1]
+        php: [7.4, 8.0, 8.1]
         composer-flag: [prefer-lowest, prefer-stable]
 
     name: php v${{ matrix.php }} - ${{ matrix.composer-flag }}

@@ -22,7 +22,7 @@ composer require ankurk91/laravel-eloquent-relationships
 ### BelongsToOne
 
 BelongsToOne relation is almost identical to
-standard [BelongsToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many) except it returns one model
+standard [BelongsToMany](https://laravel.com/docs/8.x/eloquent-relationships#many-to-many) except it returns one model
 instead of Collection of models and `null` if there is no related model in DB (BelongsToMany returns empty Collection in
 this case). Example:
 
@@ -84,7 +84,7 @@ $restaurant->operator()->update([
 ### MorphToOne
 
 MorphToOne relation is almost identical to
-standard [MorphToMany](https://laravel.com/docs/7.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
+standard [MorphToMany](https://laravel.com/docs/8.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
 returns one model instead of Collection of models and `null` if there is no related model in DB (MorphToMany returns
 empty Collection in this case). Example:
 
