@@ -6,8 +6,8 @@
 ```
 
 **Tell about your platform**
-* Laravel version : 8.x
-* Database name and version : MySql|pgSql| x.x.x
+* Laravel version : 9.x
+* Database name and version : MySql|pgSql - x.x.x
 
 **Current behavior**
 <!-- Describe how the bug manifests. -->
