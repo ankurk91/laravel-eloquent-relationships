@@ -3,19 +3,20 @@ name: tests
 on:
   push:
     branches:
-      - master
+      - main
       - dev
   pull_request:
     branches:
-      - master
+      - main
       - dev
   schedule:
-    - cron: '0 0 11 * *'
+    - cron: '0 0 10 * *'
 
 jobs:
-  test:
+  tests:
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
@@ -39,7 +40,9 @@ jobs:
         run: composer update --${{ matrix.composer-flag }} --no-interaction --no-progress
 
       - name: Execute tests
-        run: composer test -- --coverage-clover=coverage.xml
+        run: composer test:coverage
 
-      - name: Submit code coverage
-        run: bash <(curl -s https://codecov.io/bash)
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false

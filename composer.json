@@ -17,8 +17,8 @@
   ],
   "require": {
     "php": "^8.0",
-    "illuminate/database": "^6.0||^7.0||^8.0||^9.0",
-    "illuminate/support": "^6.0||^7.0||^8.0||^9.0"
+    "illuminate/database": "^6.20 || ^8.13 || ^9.0",
+    "illuminate/support": "^6.20 || ^8.13 || ^9.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5.7"
@@ -38,7 +38,8 @@
     "preferred-install": "dist"
   },
   "scripts": {
-    "test": "vendor/bin/phpunit --testdox --color=always"
+    "test": "vendor/bin/phpunit --testdox --color=always",
+    "test:coverage": "vendor/bin/phpunit --testdox --color=always --coverage-clover=coverage.xml"
   },
   "minimum-stability": "dev",
   "prefer-stable": true

@@ -5,7 +5,7 @@
 [![License](https://badgen.net/packagist/license/ankurk91/laravel-eloquent-relationships)](LICENSE.txt)
 [![Downloads](https://badgen.net/packagist/dt/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships/stats)
 [![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)](https://github.com/ankurk91/laravel-eloquent-relationships/actions)
-[![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/master/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
+[![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/main/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
 This package adds some missing relationships to Eloquent in Laravel
 
@@ -77,7 +77,7 @@ $restaurant->load('operator');
 $restaurant->load('operator.profile');
 // Perform operations
 $restaurant->operator()->update([
-  'name'=> 'Mr. Bean'
+  'name'=> 'Taylor'
 ]);
 ```
 
@@ -174,8 +174,7 @@ composer test
 
 ## Security
 
-If you discover any security related issues, please email `pro.ankurk1[at]gmail[dot]com` instead of using the issue
-tracker.
+If you discover any security issues, please email `pro.ankurk1[at]gmail[dot]com` instead of using the issue tracker.
 
 ## Attribution
 
