@@ -22,7 +22,7 @@ composer require ankurk91/laravel-eloquent-relationships
 ### BelongsToOne
 
 BelongsToOne relation is almost identical to
-standard [BelongsToMany](https://laravel.com/docs/8.x/eloquent-relationships#many-to-many) except it returns one model
+standard [BelongsToMany](https://laravel.com/docs/9.x/eloquent-relationships#many-to-many) except it returns one model
 instead of Collection of models and `null` if there is no related model in DB (BelongsToMany returns empty Collection in
 this case). Example:
 
@@ -33,6 +33,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Ankurk91\Eloquent\BelongsToOne;
+use Ankurk91\Eloquent\Relations\BelongsToOne as BelongsToOneRelation;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Restaurant extends Model
 {
@@ -40,10 +42,8 @@ class Restaurant extends Model
     
     /**
      * Each restaurant has only one operator.
-     * 
-     * @return \Ankurk91\Eloquent\Relations\BelongsToOne
      */
-    public function operator()
+    public function operator(): BelongsToOneRelation
     {
         return $this->belongsToOne(User::class)          
             ->wherePivot('is_operator', true);
@@ -52,10 +52,8 @@ class Restaurant extends Model
 
     /**
      * Get all employees including the operator.
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function employees()
+    public function employees(): BelongsToMany
     {
         return $this->belongsToMany(User::class)
             ->withPivot('is_operator');
@@ -84,7 +82,7 @@ $restaurant->operator()->update([
 ### MorphToOne
 
 MorphToOne relation is almost identical to
-standard [MorphToMany](https://laravel.com/docs/8.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
+standard [MorphToMany](https://laravel.com/docs/9.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
 returns one model instead of Collection of models and `null` if there is no related model in DB (MorphToMany returns
 empty Collection in this case). Example:
 
@@ -94,21 +92,16 @@ empty Collection in this case). Example:
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Image extends Model
-{
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
-    public function posts()
+{ 
+    public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'imageable');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
-    public function videos()
+    public function videos(): MorphToMany
     {
         return $this->morphedByMany(Video::class, 'imageable');
     }
@@ -122,17 +115,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Ankurk91\Eloquent\MorphToOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Ankurk91\Eloquent\Relations\MorphToOne as MorphToOneRelation;
 
 class Post extends Model
 {
     use MorphToOne;
 
     /**
-     * Each post has one featured image.
-     * 
-     * @return \Ankurk91\Eloquent\Relations\MorphToOne
+     * Each post may have one featured image.
      */
-    public function featuredImage()
+    public function featuredImage(): MorphToOneRelation
     {
         return $this->morphToOne(Image::class, 'imageable')
             ->wherePivot('featured', 1);
@@ -141,10 +134,8 @@ class Post extends Model
     
     /**
      * Get all images including the featured.
-     *   
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
-    public function images()
+    public function images(): MorphToMany
     {
         return $this->morphToMany(Image::class, 'imageable')
             ->withPivot('featured');
@@ -178,7 +169,8 @@ If you discover any security issues, please email `pro.ankurk1[at]gmail[dot]com`
 
 ## Attribution
 
-Most of the code is taken from this [PR](https://github.com/laravel/framework/pull/25083)
+* Most of the code is taken from this [PR](https://github.com/laravel/framework/pull/25083)
+* There is a similar package [fidum/laravel-eloquent-morph-to-one](https://github.com/fidum/laravel-eloquent-morph-to-one)
 
 ## License
 
