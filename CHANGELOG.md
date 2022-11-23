@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/1.2.0..1.3.0)
+
+* Test on php v8.2
+* Drop support for Laravel 6 and 8
+
 ## [1.2.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/1.1.0..1.2.0)
 
 * Add support for Laravel 9.x
