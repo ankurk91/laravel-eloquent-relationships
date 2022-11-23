@@ -1,7 +1,7 @@
 # Laravel Eloquent Relationships
 
 [![Packagist](https://badgen.net/packagist/v/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships)
-[![GitHub tag](https://badgen.net/github/tag/ankurk91/laravel-eloquent-relationships)](https://github.com/ankurk91/laravel-eloquent-relationships/releases)
+[![GitHub tag](https://badgen.net/github/tag/ankurk91/laravel-eloquent-relationships)](https://github.com/ankurk91/laravel-eloquent-relationships/tags)
 [![License](https://badgen.net/packagist/license/ankurk91/laravel-eloquent-relationships)](LICENSE.txt)
 [![Downloads](https://badgen.net/packagist/dt/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships/stats)
 [![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)](https://github.com/ankurk91/laravel-eloquent-relationships/actions)
@@ -170,7 +170,7 @@ If you discover any security issues, please email `pro.ankurk1[at]gmail[dot]com`
 ## Attribution
 
 * Most of the code is taken from this [PR](https://github.com/laravel/framework/pull/25083)
-* There is a similar package [fidum/laravel-eloquent-morph-to-one](https://github.com/fidum/laravel-eloquent-morph-to-one)
+* Similar package [fidum/laravel-eloquent-morph-to-one](https://github.com/fidum/laravel-eloquent-morph-to-one)
 
 ## License
 

@@ -1,4 +1,5 @@
 **I'm submitting a ...**  (check one with "x")
+
 ```
 [ ] Bug report => search github for a similar issue or PR before submitting
 [ ] Feature request
@@ -6,6 +7,7 @@
 ```
 
 **Tell about your platform**
+
 * Laravel version : 9.x
 * php version : 8.x
 * Database name and version : MySql|pgSql - x.x.x
