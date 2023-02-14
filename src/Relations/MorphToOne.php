@@ -25,8 +25,8 @@ class MorphToOne extends MorphToMany
     /**
      * Initialize the relation on a set of models.
      *
-     * @param  array $models
-     * @param  string $relation
+     * @param  array  $models
+     * @param  string  $relation
      *
      * @return array
      */
@@ -42,9 +42,9 @@ class MorphToOne extends MorphToMany
     /**
      * Match the eagerly loaded results to their parents.
      *
-     * @param  array $models
-     * @param  \Illuminate\Database\Eloquent\Collection $results
-     * @param  string $relation
+     * @param  array  $models
+     * @param  \Illuminate\Database\Eloquent\Collection  $results
+     * @param  string  $relation
      *
      * @return array
      */
@@ -69,8 +69,6 @@ class MorphToOne extends MorphToMany
 
     /**
      * Make a new related instance for the given model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model $parent
      *
      * @return \Illuminate\Database\Eloquent\Model
      */

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -8,7 +9,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 class TestCase extends BaseTestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 

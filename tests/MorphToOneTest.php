@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -8,7 +9,7 @@ use Tests\Models\Restaurant;
 
 class MorphToOneTest extends TestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 

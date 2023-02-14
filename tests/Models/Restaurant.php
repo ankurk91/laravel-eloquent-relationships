@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ankurk91\Eloquent\BelongsToOne;
+use Ankurk91\Eloquent\HasBelongsToOne;
 
 class Restaurant extends Model
 {
-    use BelongsToOne;
+    use HasBelongsToOne;
     use Traits\HasImages;
 
     protected $guarded = ['id'];

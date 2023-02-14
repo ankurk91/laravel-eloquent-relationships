@@ -11,5 +11,6 @@
 phpunit.xml.dist export-ignore
 composer.lock export-ignore
 CHANGELOG.md export-ignore
+UPGRADING.md export-ignore
 tests export-ignore
 __test__ export-ignore

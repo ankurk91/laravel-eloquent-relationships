@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/1.3.0..2.0.0)
+
+* :warning: Rename Model Traits
+* Add native php types in method arguments
+
 ## [1.3.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/1.2.0..1.3.0)
 
 * Test on php v8.2

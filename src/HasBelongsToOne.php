@@ -3,29 +3,24 @@ declare(strict_types=1);
 
 namespace Ankurk91\Eloquent;
 
-use Ankurk91\Eloquent\Relations\BelongsToOne as BelongsToOneRelation;
+use Ankurk91\Eloquent\Relations\BelongsToOne;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-trait BelongsToOne
+trait HasBelongsToOne
 {
-
     /**
      * Define a one-to-one via pivot relationship.
-     *
-     * @param  string $related
-     * @param  string $table
-     * @param  string $foreignPivotKey
-     * @param  string $relatedPivotKey
-     * @param  string $parentKey
-     * @param  string $relatedKey
-     * @param  string $relation
-     *
-     * @return \Ankurk91\Eloquent\Relations\BelongsToOne
      */
-    public function belongsToOne($related, $table = null, $foreignPivotKey = null, $relatedPivotKey = null,
-                                 $parentKey = null, $relatedKey = null, $relation = null)
-    {
+    public function belongsToOne(
+        string $related,
+        string $table = null,
+        string $foreignPivotKey = null,
+        string $relatedPivotKey = null,
+        string $parentKey = null,
+        string $relatedKey = null,
+        string $relation = null
+    ): BelongsToOne {
         // If no relationship name was passed, we will pull backtraces to get the
         // name of the calling function. We will use that function name as the
         // title of this relation since that is a great convention to apply.
@@ -58,30 +53,27 @@ trait BelongsToOne
 
     /**
      * Instantiate a new BelongsToOne relationship.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  \Illuminate\Database\Eloquent\Model $parent
-     * @param  string $table
-     * @param  string $foreignPivotKey
-     * @param  string $relatedPivotKey
-     * @param  string $parentKey
-     * @param  string $relatedKey
-     * @param  string $relationName
-     *
-     * @return \Ankurk91\Eloquent\Relations\BelongsToOne
      */
-    protected function newBelongsToOne(Builder $query, Model $parent, $table, $foreignPivotKey, $relatedPivotKey,
-                                       $parentKey, $relatedKey, $relationName = null)
-    {
-        return new BelongsToOneRelation($query, $parent, $table, $foreignPivotKey, $relatedPivotKey, $parentKey, $relatedKey, $relationName);
+    protected function newBelongsToOne(
+        Builder $query,
+        Model $parent,
+        string $table,
+        string $foreignPivotKey,
+        string $relatedPivotKey,
+        string $parentKey,
+        string $relatedKey,
+        string $relationName = null
+    ): BelongsToOne {
+        return new BelongsToOne(
+            $query, $parent, $table, $foreignPivotKey, $relatedPivotKey, $parentKey,
+            $relatedKey, $relationName
+        );
     }
 
     /**
      * Get the relationship name of the belongs to many.
-     *
-     * @return string
      */
-    protected function guessBelongsToOneRelation()
+    protected function guessBelongsToOneRelation(): string
     {
         list($one, $two, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
 

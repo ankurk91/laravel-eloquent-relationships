@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Models;
 
-use Ankurk91\Eloquent\MorphToOne;
+use Ankurk91\Eloquent\HasMorphToOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    use MorphToOne;
+    use HasMorphToOne;
 
     protected $guarded = ['id'];
 

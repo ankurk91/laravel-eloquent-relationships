@@ -1,4 +1,4 @@
-# Laravel Eloquent Relationships
+# Missing Eloquent Relationships For Laravel
 
 [![Packagist](https://badgen.net/packagist/v/ankurk91/laravel-eloquent-relationships)](https://packagist.org/packages/ankurk91/laravel-eloquent-relationships)
 [![GitHub tag](https://badgen.net/github/tag/ankurk91/laravel-eloquent-relationships)](https://github.com/ankurk91/laravel-eloquent-relationships/tags)
@@ -32,18 +32,18 @@ this case). Example:
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ankurk91\Eloquent\BelongsToOne;
-use Ankurk91\Eloquent\Relations\BelongsToOne as BelongsToOneRelation;
+use Ankurk91\Eloquent\HasBelongsToOne;
+use Ankurk91\Eloquent\Relations\BelongsToOne;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Restaurant extends Model
 {
-    use BelongsToOne;
+    use HasBelongsToOne;
     
     /**
      * Each restaurant has only one operator.
      */
-    public function operator(): BelongsToOneRelation
+    public function operator(): BelongsToOne
     {
         return $this->belongsToOne(User::class)          
             ->wherePivot('is_operator', true);
@@ -114,18 +114,18 @@ class Image extends Model
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Ankurk91\Eloquent\MorphToOne;
+use Ankurk91\Eloquent\HasMorphToOne;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Ankurk91\Eloquent\Relations\MorphToOne as MorphToOneRelation;
+use Ankurk91\Eloquent\Relations\MorphToOne;
 
 class Post extends Model
 {
-    use MorphToOne;
+    use HasMorphToOne;
 
     /**
      * Each post may have one featured image.
      */
-    public function featuredImage(): MorphToOneRelation
+    public function featuredImage(): MorphToOne
     {
         return $this->morphToOne(Image::class, 'imageable')
             ->wherePivot('featured', 1);

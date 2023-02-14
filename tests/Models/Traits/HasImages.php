@@ -1,13 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Models\Traits;
 
 use Tests\Models\Image;
-use Ankurk91\Eloquent\MorphToOne;
+use Ankurk91\Eloquent\HasMorphToOne;
 
 trait HasImages
 {
-    use MorphToOne;
+    use HasMorphToOne;
 
     /**
      * @return \Ankurk91\Eloquent\Relations\MorphToOne

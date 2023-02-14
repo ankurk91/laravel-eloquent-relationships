@@ -38,8 +38,8 @@
     "preferred-install": "dist"
   },
   "scripts": {
-    "test": "vendor/bin/phpunit --testdox --color=always",
-    "test:coverage": "vendor/bin/phpunit --testdox --color=always --coverage-clover=coverage.xml"
+    "test": "vendor/bin/phpunit",
+    "test:coverage": "vendor/bin/phpunit --coverage-clover=coverage.xml"
   },
   "minimum-stability": "dev",
   "prefer-stable": true
