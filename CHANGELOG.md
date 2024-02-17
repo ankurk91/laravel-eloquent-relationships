@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.0.0..2.1.0)
+
+* Test on Laravel 11
+* Drop support for php 8.0
+
 ## [2.0.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/1.3.0..2.0.0)
 
 * :warning: Rename Model Traits
