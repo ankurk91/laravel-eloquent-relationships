@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.1.0..2.2.0)
+
+* Add support for Laravel 12
+* Drop support for Laravel 9
+
 ## [2.1.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.0.0..2.1.0)
 
 * Test on Laravel 11

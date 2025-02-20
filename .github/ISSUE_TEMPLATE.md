@@ -8,7 +8,7 @@
 
 **Tell about your platform**
 
-* Laravel version : 11.x
+* Laravel version : 12.x
 * php version : 8.x
 * Database name and version : MySql|pgSql - x.x.x
 
