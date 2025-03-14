@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.2.2](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.2.0..2.2.2)
+
+* php 8.4 compatibility fixes
+
 ## [2.2.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.1.0..2.2.0)
 
 * Add support for Laravel 12
