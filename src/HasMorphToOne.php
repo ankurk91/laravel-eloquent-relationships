@@ -16,11 +16,11 @@ trait HasMorphToOne
     public function morphToOne(
         string $related,
         string $name,
-        string $table = null,
-        string $foreignPivotKey = null,
-        string $relatedPivotKey = null,
-        string $parentKey = null,
-        string $relatedKey = null,
+        ?string $table = null,
+        ?string $foreignPivotKey = null,
+        ?string $relatedPivotKey = null,
+        ?string $parentKey = null,
+        ?string $relatedKey = null,
         bool $inverse = false
     ): MorphToOne {
         $caller = $this->guessBelongsToManyRelation();
@@ -58,7 +58,7 @@ trait HasMorphToOne
         string $relatedPivotKey,
         string $parentKey,
         string $relatedKey,
-        string $relationName = null,
+        ?string $relationName = null,
         bool $inverse = false
     ): MorphToOne {
         return new MorphToOne($query, $parent, $name, $table, $foreignPivotKey, $relatedPivotKey, $parentKey,
@@ -72,11 +72,11 @@ trait HasMorphToOne
     public function morphedByOne(
         string $related,
         string $name,
-        string $table = null,
-        string $foreignPivotKey = null,
-        string $relatedPivotKey = null,
-        string $parentKey = null,
-        string $relatedKey = null
+        ?string $table = null,
+        ?string $foreignPivotKey = null,
+        ?string $relatedPivotKey = null,
+        ?string $parentKey = null,
+        ?string $relatedKey = null
     ): MorphToOne {
         $foreignPivotKey = $foreignPivotKey ?: $this->getForeignKey();
 
