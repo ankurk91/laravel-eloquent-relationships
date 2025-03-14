@@ -14,12 +14,12 @@ trait HasBelongsToOne
      */
     public function belongsToOne(
         string $related,
-        string $table = null,
-        string $foreignPivotKey = null,
-        string $relatedPivotKey = null,
-        string $parentKey = null,
-        string $relatedKey = null,
-        string $relation = null
+        ?string $table = null,
+        ?string $foreignPivotKey = null,
+        ?string $relatedPivotKey = null,
+        ?string $parentKey = null,
+        ?string $relatedKey = null,
+        ?string $relation = null
     ): BelongsToOne {
         // If no relationship name was passed, we will pull backtraces to get the
         // name of the calling function. We will use that function name as the
@@ -62,7 +62,7 @@ trait HasBelongsToOne
         string $relatedPivotKey,
         string $parentKey,
         string $relatedKey,
-        string $relationName = null
+        ?string $relationName = null
     ): BelongsToOne {
         return new BelongsToOne(
             $query, $parent, $table, $foreignPivotKey, $relatedPivotKey, $parentKey,
