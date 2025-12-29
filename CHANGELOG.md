@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.3.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.2.2..2.3.0)
+
+* test on php 8.5
+* remove php 8.2 support
+* remove Laravel v10 support
+
 ## [2.2.2](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.2.0..2.2.2)
 
 * php 8.4 compatibility fixes
