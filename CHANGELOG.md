@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.4.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.3.0..2.4.0)
+
+* Test on Laravel v13.x
+
 ## [2.3.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.2.2..2.3.0)
 
 * test on php 8.5
