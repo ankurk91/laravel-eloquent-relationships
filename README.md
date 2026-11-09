@@ -7,7 +7,14 @@
 [![tests](https://github.com/ankurk91/laravel-eloquent-relationships/workflows/tests/badge.svg)](https://github.com/ankurk91/laravel-eloquent-relationships/actions)
 [![codecov](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships/branch/main/graph/badge.svg)](https://codecov.io/gh/ankurk91/laravel-eloquent-relationships)
 
-This package adds some missing relationships to Eloquent in Laravel
+This package adds some missing relationships to Eloquent in Laravel.
+
+## Requirements
+
+| Package | Version |
+|---------|---------|
+| PHP     | 8.3+    |
+| Laravel | 12, 13  |
 
 ## Installation
 
@@ -21,10 +28,10 @@ composer require ankurk91/laravel-eloquent-relationships
 
 ### BelongsToOne
 
-BelongsToOne relation is almost identical to
-standard [BelongsToMany](https://laravel.com/docs/9.x/eloquent-relationships#many-to-many) except it returns one model
-instead of Collection of models and `null` if there is no related model in DB (BelongsToMany returns empty Collection in
-this case). Example:
+The `BelongsToOne` relation is almost identical to the
+standard [BelongsToMany](https://laravel.com/docs/13.x/eloquent-relationships#many-to-many) relation, except it returns a
+single model instead of a Collection of models, and `null` if there is no related model in the database (`BelongsToMany`
+returns an empty Collection in this case). Example:
 
 ```php
 <?php
@@ -39,13 +46,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Restaurant extends Model
 {
     use HasBelongsToOne;
-    
+
     /**
      * Each restaurant has only one operator.
      */
     public function operator(): BelongsToOne
     {
-        return $this->belongsToOne(User::class)          
+        return $this->belongsToOne(User::class)
             ->wherePivot('is_operator', true);
             //->withDefault();
     }
@@ -57,8 +64,8 @@ class Restaurant extends Model
     {
         return $this->belongsToMany(User::class)
             ->withPivot('is_operator');
-    }   
-}    
+    }
+}
 ```
 
 Now you can access the relationship like:
@@ -75,16 +82,16 @@ $restaurant->load('operator');
 $restaurant->load('operator.profile');
 // Perform operations
 $restaurant->operator()->update([
-  'name'=> 'Taylor'
+    'name' => 'Taylor',
 ]);
 ```
 
 ### MorphToOne
 
-MorphToOne relation is almost identical to
-standard [MorphToMany](https://laravel.com/docs/9.x/eloquent-relationships#many-to-many-polymorphic-relations) except it
-returns one model instead of Collection of models and `null` if there is no related model in DB (MorphToMany returns
-empty Collection in this case). Example:
+The `MorphToOne` relation is almost identical to the
+standard [MorphToMany](https://laravel.com/docs/13.x/eloquent-relationships#many-to-many-polymorphic-relations) relation,
+except it returns a single model instead of a Collection of models, and `null` if there is no related model in the
+database (`MorphToMany` returns an empty Collection in this case). Example:
 
 ```php
 <?php
@@ -95,7 +102,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Image extends Model
-{ 
+{
     public function posts(): MorphToMany
     {
         return $this->morphedByMany(Post::class, 'imageable');
@@ -131,7 +138,7 @@ class Post extends Model
             ->wherePivot('featured', 1);
             //->withDefault();
     }
-    
+
     /**
      * Get all images including the featured.
      */
@@ -140,9 +147,7 @@ class Post extends Model
         return $this->morphToMany(Image::class, 'imageable')
             ->withPivot('featured');
     }
-
 }
-
 ```
 
 Now you can access the relationship like:
@@ -155,6 +160,32 @@ $post = Post::with('featuredImage')->first();
 dump($post->featuredImage);
 // lazy loading
 $post->load('featuredImage');
+```
+
+The inverse relation is available via `morphedByOne()`:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Ankurk91\Eloquent\HasMorphToOne;
+use Ankurk91\Eloquent\Relations\MorphToOne;
+
+class Image extends Model
+{
+    use HasMorphToOne;
+
+    /**
+     * Get the post this image is featured on.
+     */
+    public function featuredOnPost(): MorphToOne
+    {
+        return $this->morphedByOne(Post::class, 'imageable')
+            ->wherePivot('featured', 1);
+    }
+}
 ```
 
 ## Testing

@@ -47,5 +47,6 @@ composer.phar
 
 # Other
 .phpunit.result.cache
+.phpunit.cache
 phpunit.xml
 coverage.xml

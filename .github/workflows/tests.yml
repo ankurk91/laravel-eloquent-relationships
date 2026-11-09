@@ -22,16 +22,13 @@ jobs:
       fail-fast: false
       matrix:
         php: [8.3, 8.4, 8.5]
-        laravel: [11, 12, 13]
-        exclude:
-          - php: 8.5
-            laravel: 11
+        laravel: [12, 13]
 
     name: PHP ${{ matrix.php }} - Laravel v${{ matrix.laravel }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -50,6 +47,6 @@ jobs:
         run: composer test:coverage
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           fail_ci_if_error: false

@@ -1,16 +1,27 @@
 # https://git-scm.com/book/en/Customizing-Git-Git-Attributes
 
 # Auto detect text files and perform LF normalization
-* text=auto
+* text=auto eol=lf
 
-# Export ignores
-.github export-ignore
-.gitattributes export-ignore
-.gitignore export-ignore
-.editorconfig export-ignore
-phpunit.xml.dist export-ignore
-composer.lock export-ignore
-CHANGELOG.md export-ignore
-UPGRADING.md export-ignore
-tests export-ignore
-__test__ export-ignore
+# Language-aware diffs
+*.php diff=php
+*.md  diff=markdown
+
+# Exclude development files from distribution archives (composer --prefer-dist)
+
+## Git & editor config
+/.github            export-ignore
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/.editorconfig      export-ignore
+
+## Tests
+/tests              export-ignore
+/phpunit.xml.dist   export-ignore
+
+## Docs
+/CHANGELOG.md       export-ignore
+/UPGRADING.md       export-ignore
+
+## Lock file
+/composer.lock      export-ignore

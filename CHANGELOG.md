@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+* Remove Laravel v11 support
+* Update PHPUnit to v12/v13
+* Update GitHub Actions
+
 ## [2.4.0](https://github.com/ankurk91/laravel-eloquent-relationships/compare/2.3.0..2.4.0)
 
 * Test on Laravel v13.x
